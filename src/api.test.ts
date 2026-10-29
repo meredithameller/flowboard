@@ -130,6 +130,16 @@ describe('api (Supabase mocked)', () => {
     await expect(fn()).rejects.toMatchObject({ message: 'permission denied' })
   })
 
+  it('never sends user_id: ownership is assigned by the database, so clients cannot forge it', async () => {
+    h.state.result = { data: row, error: null }
+    await createCard({ title: 'T', assignee: 'A', priority: 'High', dueDate: '2030-05-06' }, 0)
+    await updateCard('id-1', { title: 'T', assignee: 'A', priority: 'High', dueDate: '2030-05-06' })
+    await restoreCard({ id: 'id-1', title: 'T', assignee: 'A', priority: 'High', dueDate: '2030-05-06', column: 'done', position: 0 })
+    const payloads = h.state.calls.filter((c) => c[0] === 'insert' || c[0] === 'update').map((c) => c[1])
+    expect(payloads).toHaveLength(3)
+    for (const p of payloads) expect(p).not.toHaveProperty('user_id')
+  })
+
   it('subscribeToCards listens to the cards table and unsubscribes cleanly', () => {
     const stop = subscribeToCards(() => {})
     const on = call('on')!

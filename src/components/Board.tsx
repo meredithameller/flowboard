@@ -18,7 +18,12 @@ import { useTheme } from '../theme'
 
 type ModalState = { card: CardData | null } | null
 
-export default function Board() {
+interface Props {
+  userEmail?: string
+  onSignOut?: () => void
+}
+
+export default function Board({ userEmail, onSignOut }: Props) {
   const [cards, setCards] = useState<CardData[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -129,6 +134,11 @@ export default function Board() {
           <button className="primary" onClick={() => setModal({ card: null })}>
             + Add card
           </button>
+          {onSignOut && (
+            <button onClick={onSignOut} title={userEmail ? `Signed in as ${userEmail}` : undefined}>
+              Log out
+            </button>
+          )}
         </div>
       </header>
       <FilterBar filters={filters} assignees={assignees} onChange={setFilters} />
