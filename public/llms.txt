@@ -1,0 +1,12 @@
+# Flowboard
+
+> Flowboard is a shared team Kanban board for tracking work. Cards move across four columns: Backlog, In Progress, In Review and Done.
+
+## What it does
+- Create, edit and delete cards with a title, assignee, priority (High, Medium, Low) and due date.
+- Drag cards between columns, or use the "Move to column" menu and Alt+Arrow keys.
+- Search cards and filter by assignee or priority.
+- Light and dark themes. Changes sync live between everyone viewing the board.
+
+## Notes
+- The board content is user-generated and private to the team that uses it; it is not part of this site's public documentation.

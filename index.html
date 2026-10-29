@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flowboard – Team Kanban Board</title>
+    <meta
+      name="description"
+      content="Flowboard is a shared team Kanban board. Track work across Backlog, In Progress, In Review and Done with drag-and-drop cards, priorities, due dates, search and live sync."
+    />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#2563eb" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Flowboard" />
+    <meta property="og:title" content="Flowboard – Team Kanban Board" />
+    <meta
+      property="og:description"
+      content="A shared Kanban board for your team: drag-and-drop cards across Backlog, In Progress, In Review and Done."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Flowboard – Team Kanban Board" />
+    <meta
+      name="twitter:description"
+      content="A shared Kanban board for your team: drag-and-drop cards across Backlog, In Progress, In Review and Done."
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Flowboard",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any (web browser)",
+        "description": "A shared team Kanban board with Backlog, In Progress, In Review and Done columns, drag-and-drop cards, priorities, due dates, search and live sync.",
+        "featureList": [
+          "Four-column Kanban board",
+          "Drag-and-drop and keyboard card moves",
+          "Priority and due date on every card",
+          "Search and filters",
+          "Light and dark mode",
+          "Live sync between collaborators"
+        ]
+      }
+    </script>
+
+    <!-- Apply the saved theme before first paint to avoid a light-mode flash. -->
+    <script>
+      try {
+        var t = localStorage.getItem('flowboard.theme')
+        if (t !== 'light' && t !== 'dark') {
+          t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+        document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Replaced when the app loads; gives crawlers and no-JS visitors real content. -->
+      <header><h1>Flowboard</h1></header>
+      <main>
+        <p>
+          Flowboard is a shared team Kanban board. Organise work across four columns — Backlog, In
+          Progress, In Review and Done — with drag-and-drop cards, priorities, due dates, search and
+          live sync.
+        </p>
+        <noscript><p>Flowboard needs JavaScript enabled to run.</p></noscript>
+      </main>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
